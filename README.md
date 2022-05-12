@@ -103,38 +103,91 @@ Q(t+1)=T′Q(t)+TQ(t)′
 
 ### Procedure
 /* write all the steps invloved */
+```
+Step 1:
+Module Declaration. module is a keywords defined in Verilog .
+
+Step 2:
+Input-Output Delecaration. There are four flipflops
+
+1.SR Flipflop has 2 inputs along with clock.
+2.JK Flipflop has 2 inputs along with clock.
+3.D Flipflop has one input and  a clock.
+4.T Flipflop has one input and  a clock.
+
+Step 3:
+Use wire declaration and assign statements to define the functionality of logic circuits.
+
+Step 4:
+Ending module. endmodule is a keywords defined in Verilog.
+```
+
 
 
 
 ### PROGRAM 
 /*
 Program for flipflops  and verify its truth table in quartus using Verilog programming.
-Developed by: 
-RegisterNumber:  
+Developed by: poojithasetty
+RegisterNumber: 212221240050 
 */
+```
+SR  FLIPFLOP :
+module SR(S,R,C,Q,Qbar);
+input S,R,C;
+output Q,Qbar;
+wire X,Y;
+nand (X,S,C);
+nand (Y,R,C);
+nand (Q,X,Qbar);
+nand (Qbar,Y,Q);
+endmodule
 
+JK FLIPFLOP :
+module JK (J,K,C,Q,Qbar);
+input J,K,C;
+output Q,Qbar;
+wire P,S;
+nand(P,Qbar,J,C);
+nand(S,C,K,Q);
+nand(Q,P,Qbar);
+nand(Qbar,S,Q);
+endmodule
 
+D FLIPFLOP :
+module DF (D,C,Q,Qbar);
+input D,C;
+output Q,Qbar;
+assign Dbar=~D;
+wire P,S;
+nand(P,D,C);
+nand(S,C,Dbar);
+nand(Q,P,Qbar);
+nand(Qbar,S,Q);
+endmodule
 
-
-
-
+T FLIPFLOP :
+module TF (T,C,Q,Qbar);
+input T,C;
+output Q,Qbar;
+wire P,S;
+nand(P,T,C,Qbar);
+nand(S,T,C,Q);
+nand(Q,P,Qbar);
+nand(Qbar,S,Q);
+endmodule
+```
 ### RTL LOGIC FOR FLIPFLOPS 
-
-
-
-
-
-
-
-
+![output](srflipflop.png.jpg)
+![output](jkflipflop.png.jpg)
+![output](dflipflop.png.jpg)
+![output](tflipflop.png.jpg)
 
 ### TIMING DIGRAMS FOR FLIP FLOPS 
-
-
-
-
-
-
-
+![output](diagram1.png.jpg)
+![output](diagram2.png.jpg)
+![output](diagram3.png.jpg)
+![output](diagram4.png.jpg)
 
 ### RESULTS 
+Implementation of all the flipflops using verilog is done and their functionality is been validated using their functional tables.
